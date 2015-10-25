@@ -1,0 +1,49 @@
+defender.start(
+  function notify_player(rocks, paddle_y)
+  {
+    var nearest_rock_from_earth = 99999;
+    var paddle_distance_to_cover = 99999;
+
+    /* Iterate over the list of rocks and 
+       find the rock nearest to earth and
+       corresponding distance the paddle need to cover 
+    */
+    for (var i = 0; i < rocks.length; i++)
+    {
+        var rock_distance_from_paddle = rocks[i].distance;
+        var paddle_distance_from_impact = Math.round(Math.sin(rocks[i].radians) * rock_distance_from_paddle);
+        
+        var rock_distance_from_earth = Math.round(Math.cos(rocks[i].radians) * rock_distance_from_paddle);
+        
+        if (rock_distance_from_earth < nearest_rock_from_earth)
+        {
+            nearest_rock_from_earth = rock_distance_from_earth;
+            paddle_distance_to_cover = paddle_distance_from_impact;
+        }
+    }
+    
+    var moves = [];
+      
+    for( var i = 0; i < 22; i++ )
+    {
+        if (paddle_distance_to_cover == 0)
+        {
+            // Dont move paddle if already in position
+            moves.push(0);
+        }
+        else if (paddle_distance_to_cover > 0)
+        {
+			// Move paddle up one grid point
+            moves.push(-1);
+            paddle_distance_to_cover--;
+        }
+        else
+        {
+			// Move paddle down one grid point
+            moves.push(1);
+            paddle_distance_to_cover++;
+        }
+    }
+    return moves;
+  }
+);

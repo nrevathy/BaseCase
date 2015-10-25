@@ -1,0 +1,196 @@
+——————————————
+paddle position - 5
+rocks count - 1
+rock 0 - 80.09993757800315,0.04995839572194276
+rock distance - 80.09993757800315
+rock radians - 0.04995839572194276
+rock position [80,4]
+nearest rock position [80,4]
+——————————————
+paddle position - 9
+rocks count - 2
+rock 0 - 80.30566605165541,0.08727771294946145
+rock distance - 80.30566605165541
+rock radians - 0.08727771294946145
+rock position [80,7]
+rock 1 - 58.54912467321779,0.13706617431018764
+rock distance - 58.54912467321779
+rock radians - 0.13706617431018764
+rock position [58,8]
+nearest rock position [58,8]
+——————————————
+paddle position - 7
+rocks count - 3
+rock 0 - 80.30566605165541,0.08727771294946145
+rock distance - 80.30566605165541
+rock radians - 0.08727771294946145
+rock position [80,7]
+rock 1 - 58.215118311311535,0.08599429119424074
+rock distance - 58.215118311311535
+rock radians - 0.08599429119424074
+rock position [58,5]
+rock 2 - 36.49657518178932,0.16514867741462683
+rock distance - 36.49657518178932
+rock radians - 0.16514867741462683
+rock position [36,6]
+nearest rock position [36,6]
+——————————————
+paddle position - 4
+rocks count - 4
+rock 0 - 58.137767414994535,0.0688564893010446
+rock distance - 58.137767414994535
+rock radians - 0.0688564893010446
+rock position [58,4]
+rock 1 - 36.05551275463989,0.05549850524571683
+rock distance - 36.05551275463989
+rock radians - 0.05549850524571683
+rock position [36,2]
+rock 2 - 14.317821063276353,0.21109333322274654
+rock distance - 14.317821063276353
+rock radians - 0.21109333322274654
+rock position [14,3]
+rock 3 - 80.09993757800315,-0.04995839572194276
+rock distance - 80.09993757800315
+rock radians - -0.04995839572194276
+rock position [80,-4]
+nearest rock position [14,3]
+
+
+
+defender.start(
+  function notify_player(rocks, paddle_y){
+    console.log("——————————————");
+    console.log("paddle position - " + paddle_y);
+    console.log("rocks count - " + rocks.length);
+    var nearest_rock_x = 999;
+    var nearest_rock_y = 999;
+    for (var i = 0; i < rocks.length; i++)
+    {
+        console.log("rock " + i + " - " + rocks[i].distance + "," + rocks[i].radians);
+        console.log("rock distance - " + rocks[i].distance);
+        console.log("rock radians - " + rocks[i].radians);
+        console.log("rock degrees - " + rocks[i].radians * 180 / Math.PI);
+        //var rock_x = Math.round(rocks[i].distance * Math.cos(rocks[i].radians));
+        var rock_x = Math.round(rocks[i].distance * Math.cos(rocks[i].radians * (180 / Math.PI)));
+        //var rock_y = Math.round(rocks[i].distance * Math.sin(rocks[i].radians));
+        var rock_y = Math.round(rocks[i].distance * Math.sin(rocks[i].radians * (180 / Math.PI)));        
+        console.log("rock position [" + rock_x + "," + rock_y + "]");
+        if (rock_x < nearest_rock_x)
+        {
+            nearest_rock_x = rock_x;
+            nearest_rock_y = rock_y;
+        }
+    }
+
+    console.log("nearest rock position [" + nearest_rock_x + "," + paddle_y + Math.abs(nearest_rock_y) + "]");
+    var moves = [];
+    for( var i = 0; i < 22; i++ ){
+      // -1, 0, 1
+      moves.push( Math.floor(Math.random()*3) - 1 );
+    }
+    return moves;
+  }
+);
+
+algo
+
+if paddle_y == nearest_rock_y
+no movement
+if paddle_y 
+
+——————————————
+paddle position - 5
+rocks count - 1
+rock 0 - 80.15609770940699,0.06241880999595735
+rock distance - 80.15609770940699
+rock radians - 0.06241880999595735
+rock position [80,5]
+nearest rock position [80,10]
+——————————————
+paddle position - 1
+rocks count - 2
+rock 0 - 58.008620049092706,0.017239671194529696
+rock distance - 58.008620049092706
+rock radians - 0.017239671194529696
+rock position [58,1]
+rock 1 - 80.30566605165541,-0.08727771294946145
+rock distance - 80.30566605165541
+rock radians - -0.08727771294946145
+rock position [80,-7]
+nearest rock position [58,2]
+——————————————
+paddle position - 0
+rocks count - 3
+rock 0 - 80.05623023850174,-0.037482436691661486
+rock distance - 80.05623023850174
+rock radians - -0.037482436691661486
+rock position [80,-3]
+rock 1 - 58.54912467321779,-0.13706617431018764
+rock distance - 58.54912467321779
+rock radians - -0.13706617431018764
+rock position [58,-8]
+rock 2 - 36,0
+rock distance - 36
+rock radians - 0
+rock position [36,0]
+nearest rock position [36,0]
+——————————————
+paddle position - 4
+rocks count - 4
+rock 0 - 80.00624975587844,0.012499349019361679
+rock distance - 80.00624975587844
+rock radians - 0.012499349019361679
+rock position [80,1]
+rock 1 - 14.560219778561036,0.27829965900511133
+rock distance - 14.560219778561036
+rock radians - 0.27829965900511133
+rock position [14,4]
+rock 2 - 36.22154055254967,-0.11065722117389565
+rock distance - 36.22154055254967
+rock radians - -0.11065722117389565
+rock position [36,-4]
+rock 3 - 58.008620049092706,0.017239671194529696
+rock distance - 58.008620049092706
+rock radians - 0.017239671194529696
+rock position [58,1]
+nearest rock position [14,8]
+Blocked attack!
+——————————————
+paddle position - 0
+rocks count - 3
+rock 0 - 66.06814663663572,-0.04542327942157701
+rock distance - 66.06814663663572
+rock radians - -0.04542327942157701
+rock position [66,-3]
+rock 1 - 23.40939982143925,-0.348771003583907
+rock distance - 23.40939982143925
+rock radians - -0.348771003583907
+rock position [22,-8]
+rock 2 - 44.10215414239989,-0.06807645825799948
+rock distance - 44.10215414239989
+rock radians - -0.06807645825799948
+rock position [44,-3]
+nearest rock position [22,8]
+——————————————
+paddle position - 2
+rocks count - 4
+rock 0 - 80.30566605165541,-0.08727771294946145
+rock distance - 80.30566605165541
+rock radians - -0.08727771294946145
+rock position [80,-7]
+rock 1 - 58.008620049092706,-0.017239671194529696
+rock distance - 58.008620049092706
+rock radians - -0.017239671194529696
+rock position [58,-1]
+rock 2 - 36.013886210738214,-0.027770636593421036
+rock distance - 36.013886210738214
+rock radians - -0.027770636593421036
+rock position [36,-1]
+rock 3 - 15.231546211727817,-0.40489178628508343
+rock distance - 15.231546211727817
+rock radians - -0.40489178628508343
+rock position [14,-6]
+nearest rock position [14,8]
+>>>
+
+
