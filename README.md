@@ -1,3 +1,0 @@
-# BaseCase
-Test
- Paddle positioning
